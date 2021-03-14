@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  diun:
+    image: "crazymax/diun:latest"
+    hostname: "diun"
+    container_name: "diun"
+    restart: "unless-stopped"
+    labels:
+      - "diun.enable=true"
+      - "diun.watch_repo=true"
+    volumes:
+      - "./data:/data"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      TZ: "${TZ:-Europe/Zurich}"
+      LOG_LEVEL: "info"
+      LOG_JSON: "false"
+      DIUN_NOTIF_DISCORD_MENTIONS: "${PING:-@here}"
+      DIUN_NOTIF_DISCORD_TIMEOUT: "10s"
+      DIUN_NOTIF_DISCORD_WEBHOOKURL: "${WEBHOOK_URL}"
+      DIUN_PROVIDERS_DOCKER_ENDPOINT: "unix:///var/run/docker.sock"
+      DIUN_PROVIDERS_DOCKER_WATCHBYDEFAULT: "true"
+      DIUN_PROVIDERS_DOCKER_WATCHSTOPPED: "false"
+      DIUN_PROVIDERS_DOCKER: "true"
+      DIUN_WATCH_FIRSTCHECKNOTIF: "true"
+      DIUN_WATCH_SCHEDULE: "0 */6 * * *"
+      DIUN_WATCH_WORKERS: "10"

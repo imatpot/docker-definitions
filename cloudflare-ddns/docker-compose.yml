@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  cloudflare-ddns:
+    image: "joshava/cloudflare-ddns:latest"
+    hostname: "cloudflare-ddns"
+    container_name: "cloudflare-ddns"
+    restart: "unless-stopped"
+    volumes:
+      - "./config.yaml:/app/config.yaml"
+    environment:
+      PUID: "${UID:-1000}"
+      PGID: "${GID:-1000}"

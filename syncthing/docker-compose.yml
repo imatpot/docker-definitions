@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  syncthing:
+    image: "linuxserver/syncthing"
+    hostname: "syncthing"
+    container_name: "syncthing"
+    restart: "unless-stopped"
+    ports:
+      - "8384:8384"
+      - "22000:22000"
+      - "21027:21027/udp"
+    volumes:
+      - "./config:/config"
+      - "/mnt/share/files:/files"
+    environment:
+      PUID: "${SOMETHING:-1000}"
+      PGID: "${SOMETHING:-1000}"
+      TZ: "${SOMETHING:-Europe/Zurich}"

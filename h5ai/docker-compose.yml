@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  h5ai:
+    image: "awesometic/h5ai"
+    hostname: "h5ai"
+    container_name: "h5ai"
+    restart: "unless-stopped"
+    ports:
+      - "8221:80"
+    volumes:
+      - "./config:/config"
+      - "/mnt/share/files/public:/h5ai"
+    environment:
+      TZ: "${TZ:-Europe/Zurich}"
+

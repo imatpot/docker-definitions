@@ -1,0 +1,35 @@
+api: https://api.cloudflare.com/client/v4/
+logLevel: info
+
+# https://dash.cloudflare.com/profile/api-tokens
+# - dns_records:edit
+# - zone:read
+
+auth:
+  scopedToken: <token>
+
+domains:
+  - name: my-domain.tld
+    type: A
+    proxied: true
+    create: true
+    zoneId: <zone-id>
+    webhook:
+      run: <webhook-url>
+      success: <webhook-url>
+      failure: <webhook-url>
+  - name: "*.my-domain.tld"
+    type: A
+    proxied: true
+    create: true
+    zoneId: <zone-id>
+    webhook:
+      run: <webhook-url>
+      success: <webhook-url>
+      failure: <webhook-url>
+
+ipv4:
+  - type: json
+    url: https://api.ipify.org?format=json
+    fields:
+      - ip

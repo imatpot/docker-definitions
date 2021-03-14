@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  youtube-dl:
+    image: "tzahi12345/youtubedl-material:nightly"
+    hostname: "youtube-dl"
+    container_name: "youtube-dl"
+    restart: "unless-stopped"
+    ports:
+      - "8998:17442"
+    volumes:
+      - ./appdata:/app/appdata
+      - ./audio:/app/audio
+      - ./video:/app/video
+      - ./subscriptions:/app/subscriptions
+      - ./users:/app/users
+    environment:
+      ALLOW_CONFIG_MUTATIONS: "true"

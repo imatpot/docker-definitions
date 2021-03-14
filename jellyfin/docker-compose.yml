@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  jellyfin:
+    image: "linuxserver/jellyfin"
+    hostname: "jellyfin"
+    container_name: "jellyfin"
+    restart: "unless-stopped"
+    ports:
+      - "8096:8096"
+    volumes:
+      - "./config:/config"
+      - "./cache:/cache"
+      - "/mnt/share/files:/media"
+    environment:
+      PUID: "${PUID:-1000}"
+      PGID: "${PGID:-1000}"
+      TZ: "${TZ:-Europe/Zurich}"
