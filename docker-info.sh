@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+# Plagiarized from
+# https://github.com/moby/moby/blob/master/contrib/check-config.sh
+
 set -e
 
 EXITCODE=0
