@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  gotify:
+    image: "gotify/server"
+    hostname: "gotify"
+    container_name: "gotify"
+    restart: "unless-stopped"
+    ports:
+      - "8911:80"
+    volumes:
+      - "./data:/app/data"
+    environment:
+      TZ: "${TZ:-Europe/Zurich}"
+      GOTIFY_DEFAULTUSER_PASS: "${GOTIFY_DEFAULTUSER_PASS:-go}"
+

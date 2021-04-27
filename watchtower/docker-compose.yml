@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  watchtower:
+    image: "containrrr/watchtower"
+    hostname: "watchtower"
+    container_name: "watchtower"
+    restart: "unless-stopped"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      WATCHTOWER_CLEANUP: "true"
+      WATCHTOWER_POLL_INTERVAL: "86400" # 24h
+      WATCHTOWER_NOTIFICATIONS: "gotify"
+      WATCHTOWER_NOTIFICATION_GOTIFY_URL: "${WATCHTOWER_NOTIFICATION_GOTIFY_URL:-https://example.com}"
+      WATCHTOWER_NOTIFICATION_GOTIFY_TOKEN: "${WATCHTOWER_NOTIFICATION_GOTIFY_TOKEN:-t0k3n}"
