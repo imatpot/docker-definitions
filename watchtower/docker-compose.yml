@@ -10,7 +10,8 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
     environment:
       WATCHTOWER_CLEANUP: "true"
-      WATCHTOWER_POLL_INTERVAL: "86400" # 24h
+      WATCHTOWER_SCHEDULE: "0 0 4 * * *" # Every day at 04:00 AM
       WATCHTOWER_NOTIFICATIONS: "gotify"
       WATCHTOWER_NOTIFICATION_GOTIFY_URL: "${WATCHTOWER_NOTIFICATION_GOTIFY_URL:-https://example.com}"
       WATCHTOWER_NOTIFICATION_GOTIFY_TOKEN: "${WATCHTOWER_NOTIFICATION_GOTIFY_TOKEN:-t0k3n}"
+      WATCHTOWER_NO_STARTUP_MESSAGE: "true"
