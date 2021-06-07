@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  drawio:
+    image: "fjudith/draw.io"
+    hostname: "drawio"
+    container_name: "drawio"
+    restart: "unless-stopped"
+    ports:
+      - "7777:8080"
+

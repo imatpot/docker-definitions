@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  speedtest:
+    image: "adolfintel/speedtest"
+    hostname: "speedtest"
+    container_name: "speedtest"
+    restart: "unless-stopped"
+    ports:
+      - "8821:80"
+    environment:
+      MODE: "standalone"
+      ENABLE_ID_OBFUSCATION: "true"
+      PASSWORD: "${PASSWORD:-password}"
+
